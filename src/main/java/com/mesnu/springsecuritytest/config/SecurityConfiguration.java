@@ -2,6 +2,7 @@ package com.mesnu.springsecuritytest.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,6 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
+@EnableMethodSecurity
 @Configuration
 public class SecurityConfiguration {
 
@@ -43,11 +45,11 @@ public class SecurityConfiguration {
         httpSecurity.csrf().disable()
                 .authorizeHttpRequests()
 
-                .requestMatchers("/api/admin/**")
-                .hasRole("ADMIN")
-
-                .requestMatchers("/api/normal/**")
-                .hasRole("USER")
+//                .requestMatchers("/api/admin/**")
+//                .hasRole("ADMIN")
+//
+//                .requestMatchers("/api/normal/**")
+//                .hasRole("USER")
 
                 .requestMatchers("/home/public")
                 .permitAll()
